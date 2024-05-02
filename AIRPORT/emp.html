@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login | By Code Info</title>
+    <link rel="stylesheet" href="signstyle.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login-box">
+      <h1>Login</h1>
+      <form>
+        <label>Employee ID </label>
+        <input type="text" placeholder="" id="pid" />
+        <input type="button" value="Submit" onclick="submitForm()" />
+      </form>
+    </div>
+    <p class="para-2">
+      Not have an account? <a href="signup.html">Sign Up Here</a>
+    </p>
+    <script>
+      function submitForm() {
+        var pid = document.getElementById('pid').value;
+    
+        console.log('PID:', pid);
+      }
+    </script>
+  </body>
+</html>

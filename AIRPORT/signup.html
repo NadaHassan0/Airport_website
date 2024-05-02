@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title>Sign Up | By Code Info</title>
+    <link rel="stylesheet" href="signstyle.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <form>
+        <label>First Name</label>
+        <input type="text" placeholder="" id="firstName" />
+        <label>Last Name</label>
+        <input type="text" placeholder="" id="lastName" />
+        <label>Age</label>
+        <input type="number" placeholder="" id="age" />
+        <label>Sex</label>
+        <select id="sex">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <label>Passport Number</label>
+        <input type="text" placeholder="" id="passportNumber" />
+        <label>Nationality</label>
+        <input type="text" placeholder="" id="nationality" />
+        <label>Personal Identification Number (PID)</label>
+        <input type="text" placeholder="" id="pid" />
+        <input type="button" value="Submit" onclick="submitForm()" />
+      </form>
+    </div>
+    <p class="para-2">
+      Already have an account? <a href="login.html">Login here</a>
+    </p>
+    <p class="para-2">
+      Are you an employee in our airport? <a href="emp.html">Login here</a>
+    </p>
+    <script>
+
+
+
+      function submitForm() {
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var age = document.getElementById('age').value;
+        var sex = document.getElementById('sex').value;
+        var passportNumber = document.getElementById('passportNumber').value;
+        var nationality = document.getElementById('nationality').value;
+        var pid = document.getElementById('pid').value;
+
+        console.log('First Name:', firstName);
+        console.log('Last Name:', lastName);
+        console.log('Age:', age);
+        console.log('Sex:', sex);
+        console.log('Passport Number:', passportNumber);
+        console.log('Nationality:', nationality);
+        console.log('PID:', pid);
+      }
+    </script>
+  </body>
+</html>
