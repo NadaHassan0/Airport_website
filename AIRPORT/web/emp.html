@@ -23,9 +23,18 @@
     <script>
       function submitForm() {
         var pid = document.getElementById('pid').value;
+
+        if (
+      !pid
+    ) {
+      alert('Sorry, you need to type your data first.');
+      return; 
+    }
     
         console.log('PID:', pid);
+        window.location.href = 'sub_emplo.html';
       }
+
     </script>
   </body>
 </html>

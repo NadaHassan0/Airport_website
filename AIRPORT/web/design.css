@@ -105,7 +105,7 @@ nav {
   line-height: 4rem;
 }
 
-/*.booking__container {
+.booking__container {
   border-radius: 2rem;
   border: 1px solid var(--extra-light);
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
@@ -631,4 +631,4 @@ nav {
   .footer__bar {
     flex-direction: column;
     text-align: center;
-  }*/
+  }}

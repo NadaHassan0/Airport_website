@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Flight Booking Details</title>
+  <link rel="stylesheet" href="submitdes.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <div class="booking-details">
+    <h1>Flight Booking Details</h1>
+    <form>
+      <label>Departure City</label>
+      <input type="text" placeholder="Enter departure city" id="departureCity" />
+      <label>Arrival City</label>
+      <input type="text" placeholder="Enter arrival city" id="arrivalCity" />
+      <label>Departure Time</label>
+      <input type="datetime-local" id="departureTime" />
+      <label>Arrival Time</label>
+      <input type="datetime-local" id="arrivalTime" />
+      <label>Class</label>
+      <select id="flightClass">
+        <option value="first">First Class</option>
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+      </select>
+      <input type="button" value="Submit" onclick="submitBookingDetails()" />
+    </form>
+  </div>
+  <p class="para-2">
+    Would you like to change your personal information? <a href="signup.html">Update profile</a>
+  </p>
+  <script>
+    function submitBookingDetails() {
+      var departureCity = document.getElementById('departureCity').value;
+      var arrivalCity = document.getElementById('arrivalCity').value;
+      var departureTime = document.getElementById('departureTime').value;
+      var arrivalTime = document.getElementById('arrivalTime').value;
+      var flightClass = document.getElementById('flightClass').value;
+
+      console.log('Departure City:', departureCity);
+      console.log('Arrival City:', arrivalCity);
+      console.log('Departure Time:', departureTime);
+      console.log('Arrival Time:', arrivalTime);
+      console.log('Class:', flightClass);
+      
+    }
+  </script>
+  
+</body>
+
+</html>
