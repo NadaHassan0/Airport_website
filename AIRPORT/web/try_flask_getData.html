@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+</head>
+<body>
+
+<h2>Passengers</h2>
+<ul id="passengers"></ul>
+
+<script>
+$(document).ready(function(){
+    $.get("http://localhost:5000/passengers", function(data, status){
+        data.forEach(function(Passenger) {
+            $('#passengers').append('<li>' + Passenger.name + '&nbsp;' + Passenger.age + '</li>');
+        });
+    });
+});
+</script>
+
+</body>
+</html>
