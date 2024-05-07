@@ -9,9 +9,9 @@
 <body>
 
 <h2>Add Passenger</h2>
-<form id="add-passenger">
-    <label for="passenger_id">Passenger ID:</label><br>
-    <input type="text" id="passenger_id" name="passenger_id"><br>
+<form id="add-passenger" action="try_php_postData.php" method="post"></form>
+    <!--<label for="passenger_id">Passenger ID:</label><br>
+    <input type="text" id="passenger_id" name="passenger_id"><br>-->
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br>
     <label for="age">Age:</label><br>
@@ -19,8 +19,6 @@
     <label for="email">Email:</label><br>
     <input type="text" id="email" name="email"><br>
     <input type="submit" value="Submit">
-</form>
-
 <script>
 /*$(document).ready(function(){
     $('#add-passenger').submit(function(e) {
@@ -38,7 +36,7 @@ $.ajax({
     url: 'http://localhost:5000/passengers',
     type: 'POST',
     contentType: 'application/json',  // This sets the Content-Type header to 'application/json'
-    data: JSON.stringify({passportID: passenger_id, name: name, age: age, email: email}),  // Make sure to stringify your data
+    data: JSON.stringify({name: name, age: age, email: email}),  // Make sure to stringify your data
     success: function(data, status) {
         alert("Data: " + data + "\nStatus: " + status);
     }
