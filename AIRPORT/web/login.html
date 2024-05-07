@@ -8,11 +8,16 @@
 </head>
 
 <body>
+  <nav>
+    <a href="home.html" class="nav__logo">Cairo Airport</a>
+    <ul class="nav__links">
+    </ul>
+  </nav>
   <div class="login-box">
     <h1>Login</h1>
     <form>
-      <label>Personal Identification Number (PID)</label>
-      <input type="text" placeholder="" id="pid" />
+      <label>Passport Number (PN)</label>
+      <input type="text" placeholder="" id="pn" />
       <input type="button" value="Submit" onclick="submitForm()" />
     </form>
   </div>
@@ -21,15 +26,18 @@
   </p>
   <script>
     function submitForm() {
-      var pid = document.getElementById('pid').value;
+      var pn = document.getElementById('pn').value;
 
-      if (!pid) {
+      if (!pn) {
         alert('Sorry, you need to type your data first.');
         return;
       }
-
-      console.log('PID:', pid);
-       window.location.href = 'submit.html'; 
+      if (isNaN(pn)) {
+        alert('Passport Number must be a number.'); 
+        return;
+      }
+      console.log('PN:', pn);
+      window.location.href = 'submit.html'; 
     }
   </script>
 </body>
