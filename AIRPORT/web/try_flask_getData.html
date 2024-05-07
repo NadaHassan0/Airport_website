@@ -14,7 +14,7 @@
 
 <script>
 $(document).ready(function(){
-    $.get("http://localhost:5000/passengers", function(data, status){
+    $.get("http://192.168.1.60:5000/passengers", function(data, status){
         data.forEach(function(Passenger) {
             $('#passengers').append('<li>' + Passenger.name + '&nbsp;' + Passenger.age + '</li>' + '&nbsp' + Passenger.email);
         });
