@@ -9,9 +9,7 @@
 <body>
 
 <h2>Add Passenger</h2>
-<form id="add-passenger" action="try_php_postData.php" method="post"></form>
-    <!--<label for="passenger_id">Passenger ID:</label><br>
-    <input type="text" id="passenger_id" name="passenger_id"><br>-->
+<form id="add-passenger">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br>
     <label for="age">Age:</label><br>
@@ -20,6 +18,7 @@
     <input type="text" id="email" name="email"><br>
     <input type="submit" value="Submit">
 </form>
+
 <script>
 $(document).ready(function(){
     $('#add-passenger').submit(function(e) {
@@ -29,7 +28,7 @@ $(document).ready(function(){
         var email = $('#email').val();
 
         $.ajax({
-            url: '/passengers',  // replace with the URL of your Flask route
+            url: 'http://localhost:5000/passengers',  // Flask route URL
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -39,15 +38,15 @@ $(document).ready(function(){
             }),
             success: function(response) {
                 console.log(response);
+                // Add any additional success handling here
             },
             error: function(error) {
                 console.log(error);
+                // Add any additional error handling here
             }
         });
     });
 });
 </script>
-</script>
-
 </body>
 </html>
