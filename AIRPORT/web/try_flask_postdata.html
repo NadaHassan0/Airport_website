@@ -22,18 +22,28 @@
 </form>
 
 <script>
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('#add-passenger').submit(function(e) {
         e.preventDefault();
         var passenger_id = $('#passenger_id').val();
         var name = $('#name').val();
         var age = $('#age').val();
         var email = $('#email').val();
-        $.post("http://localhost:5000/passengers", {passenger_id: passenger_id, name: name, age: age, email: email}, function(data, status){
+        $.post("http://192.168.1.60:5000/passengers", {passportID: passenger_id, name: name, age: age, email: email}, function(data, status){
             alert("Data: " + data + "\nStatus: " + status);
         });
     });
+});*/
+$.ajax({
+    url: 'http://localhost:5000/passengers',
+    type: 'POST',
+    contentType: 'application/json',  // This sets the Content-Type header to 'application/json'
+    data: JSON.stringify({passportID: passenger_id, name: name, age: age, email: email}),  // Make sure to stringify your data
+    success: function(data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+    }
 });
+
 </script>
 
 </body>
