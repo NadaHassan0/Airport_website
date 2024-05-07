@@ -1,15 +1,16 @@
 .success-message {
-    width: 400px;
-    margin: 0 auto;
-    margin-top: 200px;
-    padding: 20px;
-    text-align: center;
-    border: 2px solid #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .success-message h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    color: #4463c2;
-  }
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.success-message h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #030303;
+}
