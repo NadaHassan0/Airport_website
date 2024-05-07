@@ -4,21 +4,28 @@
 <head>
   <title>Flight Booking Details</title>
   <link rel="stylesheet" href="submitdes.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+
+  <nav>
+    <a href="home.html" class="nav__logo">Cairo Airport</a>
+    <ul class="nav__links">
+  
+    </ul>
+  </nav>
+
   <div class="booking-details">
     <h1>Flight Booking Details</h1>
     <form>
-      <label>Departure City</label>
-      <li>cairo</li>
-      <label>Arrival City</label>
-      <select id="Arrival city">
-        <option value=""> Enter arrival city</option>
+      <label for="departureCity">Departure City</label>
+      <select id="departureCity">
+        <option value="">Enter Departure city</option>
+        <option value="Egypt">Egypt</option>
+      </select>
+      <label for="arrivalCity">Arrival City</label>
+      <select id="arrivalCity">
         <option value="palestine">palestine </option>
         <option value="China">China</option>
         <option value="India">India</option>
@@ -31,12 +38,15 @@
         <option value="United Kingdom">United Kingdom </option>
         <option value="Italy">Italy </option>
         <option value=" Japan"> Japan </option>
+
       </select>
-      <label>Departure Time</label>
-      <input type="datetime-local" id="departureTime" />
-      <label>Arrival Time</label>
-      <input type="datetime-local" id="arrivalTime" />
-      <label>Class</label>
+
+      <label for="departureTime">Departure Time</label>
+      <input type="datetime-local" id="departureTime">
+      <label for="arrivalTime">Arrival Time</label>
+      <input type="datetime-local" id="arrivalTime">
+      <label for="flightClass">Class</label>
+
       <select id="flightClass">
         <option value="first">First Class</option>
         <option value="economy">Economy</option>
@@ -61,12 +71,10 @@
       console.log('Departure Time:', departureTime);
       console.log('Arrival Time:', arrivalTime);
       console.log('Class:', flightClass);
-
-      window.location.href = 'success.html';
+      window.location.href = 'passenger.html';
       
     }
   </script>
   
 </body>
-
 </html>
