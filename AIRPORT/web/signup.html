@@ -36,19 +36,19 @@
       <label>nationality</label>
       <select id="nationality">
         <option value="">Select a nationality</option>
-        <option value="Pakistani">Palestinian - palestine </option>
-        <option value="Pakistani">Egyptian - Egypt </option>
+        <option value="Palestinian">Palestinian - palestine </option>
+        <option value="Egyptian">Egyptian - Egypt </option>
         <option value="Chinese">Chinese - China</option>
         <option value="Indian">Indian - India</option>
         <option value="American">American - United States</option>
         <option value="Indonesian">Indonesian - Indonesia</option>
         <option value="Pakistani">Pakistani - Pakistan</option>
-        <option value="Pakistani">Saudi - Saudi Arabia </option>
-        <option value="Pakistani"> German - Germany</option>
-        <option value="Pakistani"> French - France</option>
-        <option value="Pakistani">  British - United Kingdom </option>
-        <option value="Pakistani">  Italian - Italy </option>
-        <option value="Pakistani">  Japanese - Japan </option>
+        <option value="Saudi">Saudi - Saudi Arabia </option>
+        <option value="Pakistani"> Pakistani - Germany</option>
+        <option value="French"> French - France</option>
+        <option value="British">  British - United Kingdom </option>
+        <option value="Italian">  Italian - Italy </option>
+        <option value="Japanese">  Japanese - Japan </option>
       </select>
       <label>Address</label>
       <input type="text" placeholder="" id="address" />
@@ -85,10 +85,11 @@
         } else if (!isNaN(lastName)) {
           errorMessage = 'Last name cannot be a number.';
         } else if (isNaN(phoneNumber)) {
-          errorMessage = 'Phone number must be a integer.';
+          errorMessage = 'Phone number must be a number.';
+        }else if (isNaN(passportNumber)) {
+          errorMessage = 'passport Number must be a number.';
         }
       }
-
       if (errorMessage) {
         document.getElementById('error-message').textContent = errorMessage;
         return;
