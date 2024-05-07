@@ -26,6 +26,7 @@
       </select>
       <label for="arrivalCity">Arrival City</label>
       <select id="arrivalCity">
+        <option value="">Select a country</option>
         <option value="palestine">palestine </option>
         <option value="China">China</option>
         <option value="India">India</option>
@@ -37,8 +38,7 @@
         <option value="France">France</option>
         <option value="United Kingdom">United Kingdom </option>
         <option value="Italy">Italy </option>
-        <option value=" Japan"> Japan </option>
-
+        <option value="Japan">Japan</option>
       </select>
 
       <label for="departureTime">Departure Time</label>
@@ -46,7 +46,6 @@
       <label for="arrivalTime">Arrival Time</label>
       <input type="datetime-local" id="arrivalTime">
       <label for="flightClass">Class</label>
-
       <select id="flightClass">
         <option value="first">First Class</option>
         <option value="economy">Economy</option>
@@ -66,13 +65,16 @@
       var arrivalTime = document.getElementById('arrivalTime').value;
       var flightClass = document.getElementById('flightClass').value;
 
+      if (!departureTime || !arrivalTime || !departureCity || !arrivalCity) {
+        alert('Please fill out all fields.');
+        return;
+      } 
       console.log('Departure City:', departureCity);
       console.log('Arrival City:', arrivalCity);
       console.log('Departure Time:', departureTime);
       console.log('Arrival Time:', arrivalTime);
       console.log('Class:', flightClass);
       window.location.href = 'passenger.html';
-      
     }
   </script>
   

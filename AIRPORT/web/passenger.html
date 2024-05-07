@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Passenger Portfolio</title>
-  <link rel="stylesheet" href="sub_emplo.css">
+  <link rel="stylesheet" href="flight.css">
 </head>
 <body>
 
@@ -27,17 +27,7 @@
       </ul>
     </div>
   </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <title>Available flights</title>
-  <link rel="stylesheet" href="flight.css">
-</head>
-
-<body>
   <div class="booking-details">
     <h1>Here are the available flights according to you booking details</h1>
     <div class="flight-options">
@@ -55,7 +45,19 @@
     <input type="button" value="Submit" onclick="submitBookingDetails()" />
   </div>
 
-  <script src="script.js"></script>
-</body>
+  <script>
+    function submitBookingDetails() {
+      var flightOptions = document.getElementById('flightOptions').value;
 
+      if (flightOptions === "") {
+        alert('Please select a valid flight.'); 
+        return;
+      }
+      
+      // Rest of your code
+      alert("Your booking has been submitted :)");
+    }
+  </script>
+
+</body>
 </html>
