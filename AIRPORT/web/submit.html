@@ -10,7 +10,7 @@
 <body>
 
   <nav>
-    <a href="home.html" class="nav__logo">Cairo Airport</a>
+    <a href="home.html" class="nav__logo">Port Said Airport</a>
     <ul class="nav__links">
   
     </ul>
@@ -22,10 +22,10 @@
       <label for="departureCity">Departure City</label>
       <select id="departureCity">
         <option value="">Enter Departure city</option>
-        <option value="Egypt">Egypt</option>
+        <option value="Egypt">Port Said</option>
       </select>
-      <label for="arrivalCity">Arrival City</label>
-      <select id="arrivalCity">
+      <label for="arrivalCountry">Arrival country</label>
+      <select id="arrivalCountry">
         <option value="">Select a country</option>
         <option value="palestine">palestine </option>
         <option value="China">China</option>
@@ -41,10 +41,11 @@
         <option value="Japan">Japan</option>
       </select>
 
-      <label for="departureTime">Departure Time</label>
-      <input type="datetime-local" id="departureTime">
-      <label for="arrivalTime">Arrival Time</label>
-      <input type="datetime-local" id="arrivalTime">
+      <label for="departureDate">Departure Date</label>
+      <input type="date" id="departureDate">
+      <label for="arrivalDate">Arrival Date</label>
+      <input type="date" id="arrivalDate">
+      
       <label for="flightClass">Class</label>
       <select id="flightClass">
         <option value="first">First Class</option>
@@ -54,25 +55,22 @@
       <input type="button" value="Submit" onclick="submitBookingDetails()" />
     </form>
   </div>
-  <p class="para-2">
-    Would you like to change your personal information? <a href="signup.html">Update profile</a>
-  </p>
   <script>
     function submitBookingDetails() {
       var departureCity = document.getElementById('departureCity').value;
-      var arrivalCity = document.getElementById('arrivalCity').value;
-      var departureTime = document.getElementById('departureTime').value;
-      var arrivalTime = document.getElementById('arrivalTime').value;
+      var arrivalCountry = document.getElementById('arrivalCountry').value;
+      var departureDate = document.getElementById('departureDate').value;
+      var arrivalDate = document.getElementById('arrivalDate').value;
       var flightClass = document.getElementById('flightClass').value;
 
-      if (!departureTime || !arrivalTime || !departureCity || !arrivalCity) {
+      if (!departureDate || !arrivalDate || !departureCity || !arrivalCountry) {
         alert('Please fill out all fields.');
         return;
       } 
       console.log('Departure City:', departureCity);
-      console.log('Arrival City:', arrivalCity);
-      console.log('Departure Time:', departureTime);
-      console.log('Arrival Time:', arrivalTime);
+      console.log('Arrival Country:', arrivalCountry);
+      console.log('Departure Date:', departureDate);
+      console.log('Arrival Date:', arrivalDate);
       console.log('Class:', flightClass);
       window.location.href = 'passenger.html';
     }

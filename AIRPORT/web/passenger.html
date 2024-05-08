@@ -9,7 +9,7 @@
 <body>
 
   <nav>
-    <a href="home.html" class="nav__logo">Cairo Airport</a>
+    <a href="home.html" class="nav__logo">Port Said Airport</a>
     <ul class="nav__links">
     </ul>
   </nav>
@@ -27,6 +27,10 @@
       </ul>
     </div>
   </div>
+  
+  <p class="para-2">
+    Would you like to change your personal information? <a href="signup.html">Update profile</a>
+  </p>
 
   <div class="booking-details">
     <h1>Here are the available flights according to you booking details</h1>
@@ -49,13 +53,13 @@
     function submitBookingDetails() {
       var flightOptions = document.getElementById('flightOptions').value;
 
+      
       if (flightOptions === "") {
         alert('Please select a valid flight.'); 
         return;
       }
       
-      // Rest of your code
-      alert("Your booking has been submitted :)");
+      alert("Your booking has been submitted. You can now proceed to the airport and purchase your ticket. :)");
     }
   </script>
 
