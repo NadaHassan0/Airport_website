@@ -29,6 +29,7 @@ nav {
   margin: 20px;
 }
 
+
 .profile {
   border: 1px solid #ccc;
   padding: 20px;
@@ -84,4 +85,21 @@ input[type="button"] {
 
 input[type="button"]:hover {
   background-color: #304c7c; 
+}
+
+.para-2 {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px; 
+}
+
+.para-2 a {
+  color: #334c99;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.para-2 a:hover {
+  text-decoration: underline;
 }
