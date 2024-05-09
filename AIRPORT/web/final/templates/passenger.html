@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Passenger Portfolio</title>
-  <link rel="stylesheet" href="flight.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='flight.css') }}">
 </head>
 <body>
 
@@ -16,14 +16,14 @@
 
   <div class="portfolio">
     <div class="profile">
-      <h2>Walaa Saber</h2>
+      <h2>{{firstName}} {{lastName}}</h2>
       <ul>
-        <li><strong>phoneNumber:</strong> +20 100 246 3472</li>
-        <li><strong>passport number:</strong> 99999999</li>
-        <li><strong>Age:</strong> 30</li>
-        <li><strong>gender:</strong> female</li>
-        <li><strong>nationality:</strong> Egyptian</li>
-        <li><strong>address:</strong> Port Foaud</li>
+        <li><strong>passport number:</strong> {{passportNumber}}</li>
+        <li><strong>phoneNumber:</strong> {{phoneNumber}}</li>
+        <li><strong>Age:</strong> {{age}}</li>
+        <li><strong>gender:</strong> {{gender}}</li>
+        <li><strong>nationality:</strong> {{nationality}}</li>
+        <li><strong>address:</strong> {{address}}</li>
       </ul>
     </div>
   </div>
