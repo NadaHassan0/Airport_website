@@ -25,36 +25,67 @@ def get_home():
 
 
 @app.route('/passengers', methods=['POST'], strict_slashes=False)
-def add_passenger():
+def signup():
     conn = get_db_connection()
     try:
         data = request.get_json()
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO Passenger (name, age, email) VALUES (%s, %s, %s)",
-                       (data['name'], data['age'], data['email']))
+        cursor.execute("INSERT INTO Passenger (first_Name, last_Name, phone_number, age, gender, passportNumber, NATIONALITY, address , email) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                       (data['firstName'], data['lastName'], data['phoneNumber'], data['age'], data['gender'], data['passportNumber'], data['nationality'], data['address'] , data['email']))
         conn.commit()
     except Exception as e:
         return jsonify({'error': str(e)}), 400
     finally:
         cursor.close()
         close_db_connection(conn)
-    return jsonify(data), 200
+    return jsonify(data), 200 
+    
 
-@app.route('/passengers/<int:passportID>', methods=['GET'])
-def get_profile(passportID):
-    conn = get_db_connection()
-    cursor = conn.cursor(pymysql.cursors.DictCursor)
+'''@app.route('/get_employee_data', methods=['POST'])
+def get_employee_data():
     try:
-        cursor.execute("SELECT * FROM passengers WHERE passportID = %s", (passportID,))
-        data = cursor.fetchone()
-        if data is None:
-            return jsonify({'error': 'No profile found with this ID'}), 404
+        # Get employee ID from request body
+        data = request.get_json()
+        employee_id = data['employeeID']
+
+        # Connect to database
+        conn = get_db_connection()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
+
+        # Execute query to fetch employee data
+        cursor.execute("SELECT * FROM employees WHERE employee_ID = %s", (employee_id,))
+        employee_data = cursor.fetchone()
+        conn.commit()
+
+        # Check if data found
+        if employee_data is None:
+            return jsonify({'error': 'No employee found with this ID'}), 404
+
+        # Prepare response data
+        response = {
+            'success': True,
+            'employee': {
+                "name": employee_data['name'],
+                "phone": employee_data['phone'],
+                "employee_ID": employee_data['employee_ID'],
+                "age": employee_data['age'],
+                "department": employee_data['department'],
+                "job_title": employee_data['job_title'],
+                "hire_date": employee_data['hire_date'],
+                "salary": employee_data['salary'],
+                "email": employee_data['email']
+            }
+        }
+
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+
     finally:
         cursor.close()
         close_db_connection(conn)
-    return jsonify(data), 200
+
+    return jsonify(response), 200
+
 
 @app.route('/employees/<int:employee_ID', methods=['GET'])
 def get_employees(employee_ID):
@@ -71,6 +102,6 @@ def get_employees(employee_ID):
         cursor.close()
         close_db_connection(conn)
     return jsonify(data), 200
-
+'''
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)
