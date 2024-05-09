@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <label for="try">Try:</label>
+    <input type="text" id="try" name="try" placeholder="Enter your try">
+    <button type="button" onclick="sendData()">Submit</button>
+
+    <script>
+        function sendData() {
+            var tryData = document.getElementById("try").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:5000/process_data');
+            xhr.setRequestHeader('Content-Type', 'application/json');  // Set content type
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Data sent successfully!');
+                    // Handle successful response (optional)
+                } else {
+                    console.error('Error sending data:', xhr.statusText);
+                }
+            };
+
+            xhr.onerror = function() {
+                console.error('Network error:', xhr.statusText);
+            };
+
+            var jsonData = { "try": tryData }; // Create JSON object
+            xhr.send(JSON.stringify(jsonData));
+        }
+    </script>
+</body>
+</html>
