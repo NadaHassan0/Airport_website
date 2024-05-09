@@ -43,5 +43,23 @@ def login():
     lastName = users[0]['last_Name']
     return render_template('passenger.html',firstName=firstName,lastName=lastName,passportNumber=passportNumber, phoneNumber=phoneNumber, age=age, nationality=nationality, gender=gender, address=address)
 
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    firstName = request.form.get('firstName')
+    lastName = request.form.get('lastName')
+    phoneNumber = request.form.get('phoneNumber')
+    age = request.form.get('age')
+    email = request.form.get('email')
+    gender = request.form.get('gender')
+    passportNumber = request.form.get('passportNumber')
+    nationality = request.form.get('nationality')
+    address = request.form.get('address')
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO Passenger (passportNumber, NATIONALITY,age,gender,phone_number,email,address,first_Name,last_Name) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (passportNumber,nationality,age,gender,phoneNumber,email,address,firstName,lastName))
+    conn.commit()
+    close_db_connection(conn)
+    return render_template('login.html')
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)

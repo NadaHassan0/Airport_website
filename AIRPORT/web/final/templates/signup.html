@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | By Code Info</title>
-    <link rel="stylesheet" href="signstyle.css" />
+    <link rel="stylesheet" href="signstyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
     <style>
         .error-message {
@@ -43,26 +42,26 @@
 
 <div class="signup-box">
     <h1>Sign Up</h1>
-    <form id="signupForm">
+    <form id="signupForm" action="http://localhost:5000/signup" method="post">
         <label for="firstName">First Name</label>
-        <input type="text" placeholder="" id="firstName" required />
+        <input type="text" placeholder="" id="firstName" name="firstName" required />
         <label for="lastName">Last Name</label>
-        <input type="text" placeholder="" id="lastName" required/>
+        <input type="text" placeholder="" id="lastName" name="lastName" required/>
         <label for="phoneNumber">Phone Number</label>
-        <input type="tel" placeholder="" id="phoneNumber" required/>
+        <input type="tel" placeholder="" id="phoneNumber" name="phoneNumber" required/>
         <label for="age">Age</label>
-        <input type="number" placeholder="" id="age" required/>
+        <input type="number" placeholder="" id="age" name="age" required/>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required/>
         <label for="gender">Gender</label>
-        <select id="gender" required>
+        <select id="gender" name="gender" required>
             <option value="male">Male</option>
             <option value="female">Female</option>
         </select>
         <label for="passportNumber">Passport Number</label>
-        <input type="number" placeholder="" id="passportNumber"required />
+        <input type="number" placeholder="" id="passportNumber" name="passportNumber" required />
         <label for="nationality">Nationality</label>
-        <select id="nationality" required>
+        <select id="nationality" name="nationality" required>
             <option value="">Select a nationality</option>
             <option value="Palestinian">Palestinian - Palestine </option>
             <option value="Egyptian">Egyptian - Egypt </option>
@@ -83,9 +82,8 @@
             <option value="ka3 2l hamor">ka3 2l hamor - ka3 2l hamor </option>
         </select>
         <label for="address">Address</label>
-        <input type="text" placeholder="" id="address" required/>
-        <button type="submit" onclick="openWebsite()"> Submit </button>
-
+        <input type="text" placeholder="" id="address" name="address" required/>
+        <input type="submit" value="Submit">
     </form>
     <div id="error-message" class="error-message"></div>
 </div>
@@ -95,81 +93,6 @@
   <p class="para-2">
     Are you an employee in our airport? <a href="emp.html">Login here</a>
   </p>
-<script>
-
-function openWebsite() {
-        window.open('submit.html', '_blank');
-}
-$(document).ready(function(){
-    $('#signupForm').submit(function(e) {
-        e.preventDefault();
-        var firstName = $('#firstName').val();
-        var lastName = $('#lastName').val();
-        var phoneNumber = $('#phoneNumber').val();
-        var age = $('#age').val();
-        var gender = $('#gender').val();
-        var passportNumber = $('#passportNumber').val();
-        var nationality = $('#nationality').val();
-        var address = $('#address').val();
-        var email = $('#email').val();
-
-        var errorMessage = '';
-
-        if (!firstName || !lastName || !phoneNumber || !age || !gender || !passportNumber || !nationality || !address || !email) {
-        errorMessage = 'Please fill out all fields.';
-        } else {
-            if (isNaN(age)) {
-                errorMessage = 'Age must be a number.';
-            } else if (!isNaN(firstName)) {
-                errorMessage = 'First name cannot be a number.';
-            } else if (!isNaN(lastName)) {
-                errorMessage = 'Last name cannot be a number.';
-            } else if (isNaN(phoneNumber)) {
-                errorMessage = 'Phone number must be a number.';
-            } else if (isNaN(passportNumber)) {
-                errorMessage = 'Passport Number must be a number.';
-            }
-        }
-
-        if (errorMessage) {
-            $('#error-message').text(errorMessage);
-            return;
-        } else {
-            $('#error-message').text('');
-        }
-
-        var data = {
-            'firstName': firstName,
-            'lastName': lastName,
-            'phoneNumber': phoneNumber,
-            'age': age,
-            'gender': gender,
-            'passportNumber': passportNumber,
-            'nationality': nationality,
-            'address': address,
-            'email': email
-        };
-
-        $.ajax({
-            url: 'http://localhost:5000/passengers',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            success: function(response) {
-                console.log(response);
-                // Handle success here
-            },
-            eerror: function(jqXHR, textStatus, errorThrown) {
-                console.error('Error:', textStatus, errorThrown);
-
-               
-}
-            })
-        });
-    });
-
-</script>
-
 </body>
 
 </html>
