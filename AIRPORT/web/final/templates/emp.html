@@ -15,10 +15,11 @@
   </nav>
     <div class="login-box">
       <h1>Login</h1>
-      <form>
+      <form action="http://localhost:5000/emp" method="post">
         <label>Employee ID </label>
-        <input type="text" placeholder="" id="pid" />
-        <input type="button" value="Submit" onclick="submitForm()" />
+        <label for="pid" title="Employee ID">Employee ID</label>
+        <input type="text" placeholder="Enter your employee ID" id="pid" name="empId" required />
+        <input type="submit" value="Submit"/>
       </form>
     </div>
     <p class="para-2">

@@ -61,5 +61,29 @@ def signup():
     conn.commit()
     close_db_connection(conn)
     return render_template('login.html')
+
+@app.route('/emp', methods=['POST'])
+def emp():
+    empId = request.form.get('empId')
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Employee where employee_ID = %s", (empId,))
+    users = cursor.fetchall()
+    close_db_connection(conn)
+    if not users:
+        return "No Employee found with that ID."
+    name = users[0]['Name']
+    phoneNumber = users[0]['Phone_number']
+    age = users[0]['Age']
+    department = users[0]['Department']
+    jobTitle = users[0]['Job_Title']
+    salary = users[0]['Salary']
+    email = users[0]['Email']
+    hireDate = users[0]['Hire_date']
+    return render_template('employee.html',empId=empId,name=name,phoneNumber=phoneNumber,age=age,department=department,jobTitle=jobTitle,salary=salary,email=email,hireDate=hireDate)
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)
