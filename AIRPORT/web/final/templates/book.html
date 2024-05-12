@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flight Booking Details</title>
+    <title>Flight Booking Details</title>
+    <link rel="stylesheet" href="flight.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='flight.css') }}">
 </head>
 <body>
+  <nav>
+    <a href="home.html" class="navlogo">Port Said Airport</a>
+    <ul class="navlinks">
 
+    </ul>
+  </nav>
 <div class="booking-details">
   <h1>Here are the available flights according to your booking details</h1>
   <div class="flight-options">
