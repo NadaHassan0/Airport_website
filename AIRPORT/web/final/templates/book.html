@@ -16,12 +16,15 @@
   </nav>
 <div class="booking-details">
   <h1>Here are the available flights according to your booking details</h1>
+  <form action="http://localhost:5000/booking-details" method="post">
+    <label for="flightOptions">Select a flight</label>
+    <select id="flightOptions" name="flightOptions" required>
         {% for flight in flights %}
-            <ul>
-              <li>{{ flight }}</li>
-            </ul>
+        <option value="{{flight.flight_number}}">{{flight}}</option>
         {% endfor %}
+    </select>
   <input type="submit" value="Submit">
+  </form>
 </div>
 
 <script>
@@ -36,7 +39,6 @@
     alert("Your booking has been submitted. You can now proceed to the airport and purchase your ticket. :)");
   }
 </script>
-
 </body>
 </html>
 
