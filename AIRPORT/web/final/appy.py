@@ -83,6 +83,16 @@ def emp():
     return render_template('employee.html',empId=empId,name=name,phoneNumber=phoneNumber,age=age,department=department,jobTitle=jobTitle,salary=salary,email=email,hireDate=hireDate)
 
 
+@app.route('/flight', methods=['POST'])
+def flight():
+    flightNumber = request.form.get('flightNumber')
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Flight")
+    flights = cursor.fetchall()
+    close_db_connection(conn)
+    return render_template('book.html',flights=flights)
+
 
 
 if __name__ == '__main__':
