@@ -16,7 +16,6 @@
     <div class="login-box">
       <h1>Login</h1>
       <form action="http://192.168.204.53:5000/emp" method="post">
-        <label>Employee ID </label>
         <label for="pid" title="Employee ID">Employee ID</label>
         <input type="text" placeholder="Enter your employee ID" id="pid" name="empId" required />
         <input type="submit" value="Submit"/>
@@ -24,6 +23,9 @@
     </div>
     <p class="para-2">
       Not have an account? <a href="signup.html">Sign Up Here</a>
+    </p>
+    <p class="para-2">
+      Are you an employee in our airport? <a href="emp.html">Login here</a>
     </p>
     <script>
       function submitForm() {
@@ -41,7 +43,6 @@
         console.log('PID:', pid);
         window.location.href = 'sub_emplo.html';
 }
-
     </script>
   </body>
 </html>
