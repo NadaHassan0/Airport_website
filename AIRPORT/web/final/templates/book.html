@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Booking Details</title>
+</head>
+<body>
+
+<div class="booking-details">
+  <h1>Here are the available flights according to your booking details</h1>
+  <div class="flight-options">
+    <label for="flightOptions">Select an airline:</label>
+    <select id="flightOptions" title="Select a flight">
+      <option value="">Select an airline</option>
+      <option value="Qatar Airways">May 13, 2024 6:00 - Qatar Airways</option>
+      <option value="EgyptAir">May 13, 2024 9:00 - EgyptAir</option>
+      <option value="Emirates">May 13, 2024 12:00 - Emirates</option>
+      <option value="British Airways">May 13, 2024 15:00 - British Airways</option>
+      <option value="Etihad Airways">May 13, 2024 18:00 - Etihad Airways</option>
+      <option value="Saudi Airlines">May 13, 2024 21:00 - Saudi Airlines</option>
+    </select>
+  </div>
+  <input type="button" value="Submit" onclick="submitBookingDetails()" />
+</div>
+
+<script>
+  function submitBookingDetails() {
+    var flightOptions = document.getElementById('flightOptions').value;
+
+    if (flightOptions === "") {
+      alert('Please select a valid flight.'); 
+      return;
+    }
+    
+    alert("Your booking has been submitted. You can now proceed to the airport and purchase your ticket. :)");
+  }
+</script>
+
+</body>
+</html>
+

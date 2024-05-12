@@ -10,9 +10,9 @@
 <body>
 
   <nav>
-    <a href="home.html" class="nav__logo">Port Said Airport</a>
-    <ul class="nav__links">
-  
+    <a href="home.html" class="navlogo">Port Said Airport</a>
+    <ul class="navlinks">
+
     </ul>
   </nav>
 
@@ -24,21 +24,23 @@
         <option value="">Enter Departure city</option>
         <option value="Egypt">Port Said</option>
       </select>
-      <label for="arrivalCountry">Arrival country</label>
-      <select id="arrivalCountry">
-        <option value="">Select a country</option>
-        <option value="palestine">palestine </option>
-        <option value="China">China</option>
-        <option value="India">India</option>
-        <option value="United States">United States</option>
-        <option value="Indonesia">Indonesia</option>
-        <option value="Pakistan">Pakistan</option>
-        <option value="Saudi Arabia">Saudi Arabia </option>
-        <option value="Germany">Germany</option>
-        <option value="France">France</option>
-        <option value="United Kingdom">United Kingdom </option>
-        <option value="Italy">Italy </option>
-        <option value="Japan">Japan</option>
+      <label for="arrivalAirport">Arrival airport</label>
+      <select id="arrivalAirport">
+        <option value="AMS">"AMS"-Amsterdam Airport Schiphol</option>
+        <option value="ATL">"ATL"-Hartsfield-Jackson Atlanta International Airport</option>
+        <option value="CDG">"CDG"-Charles de Gaulle Airport</option>
+        <option value="DEN">"DEN"-Denver International Airport</option>
+        <option value="DFW">"DFW"-Dallas/Fort Worth International Airport</option>
+        <option value="DOH">"DOH"-Hamad International Airport</option>
+        <option value="HND">"HND"-Tokyo Haneda Airport</option>
+        <option value="JED">JED"-King Abdulaziz International Airport</option>
+        <option value="JFK">"JFK"-John F. Kennedy International Airport</option>
+        <option value="LAX">"LAX"-Los Angeles International Airport</option>
+        <option value="LHR">"LHR"-London Heathrow Airport</option>
+        <option value="ORD">"ORD"-O'Hare International Airport</option>
+        <option value="PEK">"PEK"-Beijing Capital International Airport</option>
+        <option value="SFO">"SFO"-San Francisco International Airport</option>
+        <option value="SYD">"SYD"Sydney Airport</option>
       </select>
 
       <label for="departureDate">Departure Date</label>
@@ -58,21 +60,21 @@
   <script>
     function submitBookingDetails() {
       var departureCity = document.getElementById('departureCity').value;
-      var arrivalCountry = document.getElementById('arrivalCountry').value;
+      var arrivalCountry = document.getElementById('arrivalAirport').value;
       var departureDate = document.getElementById('departureDate').value;
       var arrivalDate = document.getElementById('arrivalDate').value;
       var flightClass = document.getElementById('flightClass').value;
 
-      if (!departureDate || !arrivalDate || !departureCity || !arrivalCountry) {
+      if (!departureDate || !arrivalDate || !departureCity || !arrivalAirport) {
         alert('Please fill out all fields.');
         return;
       } 
       console.log('Departure City:', departureCity);
-      console.log('Arrival Country:', arrivalCountry);
+      console.log('Arrival Airport:', arrivalCAirport);
       console.log('Departure Date:', departureDate);
       console.log('Arrival Date:', arrivalDate);
       console.log('Class:', flightClass);
-      window.location.href = 'passenger.html';
+      window.location.href = 'book.html';
     }
   </script>
   
