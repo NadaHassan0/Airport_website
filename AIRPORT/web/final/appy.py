@@ -103,7 +103,7 @@ def flight():
         cursor.execute("SELECT * FROM Flight where Arrival_Airport = %s", (date,))
         flights = cursor.fetchall()
         if not flights:
-            return "No Flight found with that date."
+            return "No Flight found with that date or Arrival Airport."
         close_db_connection(conn)
         return render_template('book.html',flights=flights)
     except Exception as e:
