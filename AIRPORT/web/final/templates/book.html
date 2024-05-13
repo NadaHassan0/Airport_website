@@ -16,7 +16,7 @@
   </nav>
 <div class="booking-details">
   <h1>Here are the available flights according to your booking details</h1>
-  <form action="http://localhost:5000/booking-details" method="post">
+  <form action="http://192.168.204.53:5000/booking-details" method="post">
     <label for="flightOptions">Select a flight</label>
     <select id="flightOptions" name="flightOptions" required>
         {% for flight in flights %}
