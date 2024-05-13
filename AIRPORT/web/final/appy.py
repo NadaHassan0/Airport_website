@@ -1,9 +1,12 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask,render_template, request
 from flask_cors import CORS
 import pymysql
+import werkzeug
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
+
+temp = None
 
 # Function to get database connection
 def get_db_connection():
@@ -26,6 +29,7 @@ def get_home():
 
 @app.route('/login', methods=['POST'])
 def login():
+    global temp
     passportNumber = request.form.get('pn')
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -41,6 +45,7 @@ def login():
     address = users[0]['address']
     firstName = users[0]['first_Name']
     lastName = users[0]['last_Name']
+    temp = passportNumber
     return render_template('passenger.html',firstName=firstName,lastName=lastName,passportNumber=passportNumber, phoneNumber=phoneNumber, age=age, nationality=nationality, gender=gender, address=address)
 
 
@@ -83,17 +88,62 @@ def emp():
     return render_template('employee.html',empId=empId,name=name,phoneNumber=phoneNumber,age=age,department=department,jobTitle=jobTitle,salary=salary,email=email,hireDate=hireDate)
 
 
+@app.route('/book', methods=['POST'])
+def book():
+    return render_template("submit.html")
+
+
 @app.route('/flight', methods=['POST'])
 def flight():
-    flightNumber = request.form.get('flightNumber')
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Flight")
-    flights = cursor.fetchall()
-    close_db_connection(conn)
-    return render_template('book.html',flights=flights)
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        date= request.form.get('arrivalAirport')
+        print(date)
+        cursor.execute("SELECT * FROM Flight where Arrival_Airport = %s", (date,))
+        flights = cursor.fetchall()
+        if not flights:
+            return "No Flight found with that date or Arrival Airport."
+        close_db_connection(conn)
+        return render_template('book.html',flights=flights)
+    except Exception as e:
+        print(e)
+        return render_template('error.html', error=str(e))
 
 
+@app.route('/booking-details', methods=['POST'])
+def booked():
+    global temp
+    try:
+        data = request.form
+        print(data)
+        data = list(data.values())
+        #data = data[0].split(',')
+        #print(data)
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        print(temp)
+        print(data)
+        if not temp:
+            return "Please login first"
+        cursor.execute("UPDATE Passenger SET flight = %s WHERE passportNumber = %s", (data, temp,))
+        conn.commit()
+        close_db_connection(conn)
+        return ("Flight booked successfully")
+    except Exception as e:
+        print(e)
+        return render_template('error.html', error=str(e)), 500
+
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors
+    if isinstance(e, werkzeug.exceptions.HTTPException):
+        return e
+
+    # handling non-HTTP exceptions only
+    print(e)
+    return render_template('error.html', error=str(e)), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)

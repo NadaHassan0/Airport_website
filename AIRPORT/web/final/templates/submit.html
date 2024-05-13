@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flight Booking Details</title>
   <link rel="stylesheet" href="submitdes.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='submitdes.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-
   <nav>
     <a href="home.html" class="navlogo">Port Said Airport</a>
     <ul class="navlinks">
@@ -18,14 +20,14 @@
 
   <div class="booking-details">
     <h1>Flight Booking Details</h1>
-    <form>
+    <form action="http://localhost:5000/flight" method="post">
       <label for="departureCity">Departure City</label>
       <select id="departureCity">
         <option value="">Enter Departure city</option>
         <option value="Egypt">Port Said</option>
       </select>
       <label for="arrivalAirport">Arrival airport</label>
-      <select id="arrivalAirport">
+      <select id="arrivalAirport" name="arrivalAirport">
         <option value="AMS">select an airport</option>
         <option value="AMS">"AMS"-Amsterdam Airport Schiphol</option>
         <option value="ATL">"ATL"-Hartsfield-Jackson Atlanta International Airport</option>
@@ -45,7 +47,7 @@
       </select>
 
       <label for="departureDate">Departure Date</label>
-      <input type="date" id="departureDate">
+      <input type="date" id="departureDate" name="departureDate" required>
       <label for="arrivalDate">Arrival Date</label>
       <input type="date" id="arrivalDate">
       
@@ -55,29 +57,8 @@
         <option value="economy">Economy</option>
         <option value="business">Business</option>
       </select>
-      <input type="button" value="Submit" onclick="submitBookingDetails()" />
+      <input type="submit" value="Search">
     </form>
-  </div>
-  <script>
-    function submitBookingDetails() {
-      var departureCity = document.getElementById('departureCity').value;
-      var arrivalCountry = document.getElementById('arrivalAirport').value;
-      var departureDate = document.getElementById('departureDate').value;
-      var arrivalDate = document.getElementById('arrivalDate').value;
-      var flightClass = document.getElementById('flightClass').value;
-
-      if (!departureDate || !arrivalDate || !departureCity || !arrivalAirport) {
-        alert('Please fill out all fields.');
-        return;
-      } 
-      console.log('Departure City:', departureCity);
-      console.log('Arrival Airport:', arrivalCAirport);
-      console.log('Departure Date:', departureDate);
-      console.log('Arrival Date:', arrivalDate);
-      console.log('Class:', flightClass);
-      window.location.href = 'book.html';
-    }
-  </script>
-  
+  </div>  
 </body>
 </html>
